@@ -12,6 +12,7 @@ case $- in
    *i*) source ~/.extra
 esac
 
+export EDITOR=‘/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl’
 
 # generic colouriser
 GRC=`which grc`

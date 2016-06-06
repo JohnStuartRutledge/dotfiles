@@ -1,3 +1,5 @@
+alias sudo='sudo '  # allows you to pass aliases to sudo
+
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
 alias cd..="cd .."
@@ -14,7 +16,7 @@ alias cp='cp -v'
 
 alias cask='brew cask' # i <3 u cask
 alias where=which # sometimes i forget
-alias brwe=brew  #typos
+alias brwe=brew  # typos
 
 alias hosts='sudo $EDITOR /etc/hosts'   # yes I occasionally 127.0.0.1 twitter.com ;)
 
@@ -31,8 +33,13 @@ export CLICOLOR_FORCE=1
 
 # ls options: A = include hidden (but not . or ..), F = put `/` after folders, h = byte unit suffixes
 alias ls='gls -AFh ${colorflag} --group-directories-first'
+alias ll='ls'
+alias l.='ls -d .*'           # list hidden files
 alias lsd='ls -l | grep "^d"' # only directories
+
 #    `la` defined in .functions
+# list aliases
+#alias ls='ls --color=auto -p' # add color
 ###
 
 
@@ -73,6 +80,114 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash; sudo rm /p
 # Update installed Ruby gems, Homebrew, npm, and their installed packages
 alias brew_update="brew -v update; brew -v upgrade --all; brew cleanup; brew cask cleanup; brew prune; brew doctor"
 alias update_brew_npm_gem='brew_update; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update --no-rdoc --no-ri'
+
+
+# Git aliases
+alias ga='git add'
+alias gap='git add -p'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gco='git checkout'
+alias gc='git commit -v'
+alias gcop='git commit -p'
+alias gcl='git config --list'
+alias gd='git diff'
+alias gde='git diff | $EDITOR'
+alias gdt='git difftool'
+alias gf='git fetch'
+alias gfa='git fetch --all'
+alias ghist='git log --pretty=format:"%C(yellow)%h%Creset | %C(cyan)%s%Cred%d %Creset[ %Cgreen%an %Creset: %C(white)%ar%Creset ]" --graph --date=short'
+alias gl='git log --decorate --graph --date-order'
+alias gll='git log --oneline --graph --decorate --left-right --boundary --date-order'
+alias glll="git log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+alias glog='git log --oneline --decorate --color --graph'
+alias gmff='git merge --ff-only'
+alias gp='git push'
+alias gup='git pull --rebase'
+alias gu='git up'
+
+# work with remote files
+alias gr='git remote'
+alias gra='git remote add'
+alias grmv='git remote rename'
+alias grrm='git remote remove'
+alias grv='git remote -v'
+alias grp='git remote prune' # pass name of remote to clean up delete branches
+
+alias gmff='git merge --ff-only'
+alias gmno='git merge --no-ff'
+
+alias grbi='git rebase -i'
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+alias grbo='git rebase --onto'
+
+alias grh='git reset HEAD'
+alias grhh='git reset HEAD --hard'
+
+alias gs='git status'
+alias gss='git status -s'
+alias gsta='git stash'
+alias gstp='git stash pop'
+
+alias gcl='git config --list' # review global and project git config settings
+
+# http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
+# alias assume = update-index --assume-unchanged
+# alias unassume = update-index --no-assume-unchanged
+# alias assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+# alias snapshot = !git stash save "snapshot: $(date)" && git staash apply "stash@{0}"
+# alias ours = "!f() { git checkout --ours $0 && git add $0; }; f"
+# alias theirs = "if() { git checkout --theirs $0 && git add $0; }; f"
+
+
+# DOCKER
+
+# kill all running containers
+alias dockerkillall='docker kill $(docker ps -q)'
+
+# delete all stopped containers.
+alias dockercleanc='printf "\n>>> Deleting stopped containers\n\n" && docker rm $(docker ps -a -q)'
+
+# delete all untagged images
+alias dockercleani='printf "\n>>> Deleting untagged images\n\n" && docker rmi $(docker images -q -f dangling=true)'
+
+# delete all stopped containers and untagged images
+alias dockerclean='dockercleanc || true && dockercleani'
+
+
+# misc aliases
+alias kp='ps auxwww'
+alias redo='sudo !!'              # redo last command
+alias cwd='pwd | pbcopy'          # copy working dir to clipboard
+alias cleanup.ds_store="find . -type f -name '*.DS_Store' -ls -delete"
+alias fn='find . -name'
+
+# system monitoring
+#alias topcpu='ps aux | sort -n -k 2 | tail -10' # top 10 cpu processes
+alias topcpu='top -o cpu'
+alias topmem='ps aux | sort -b -k 4 | tail'
+alias ispy='lsof -i | grep -E "(LISTEN|ESTABLISHED)"'
+alias dush='du -sm *|sort -n|tail' # find megabyte eating files or directories
+
+# disk usage with human sizes and minimal depth
+alias du1='du -h --max-depth=1'
+alias hi='history | tail -20'
+
+# list currently mounted filesystems in a nice readable columns
+alias mount='mount | column -t'
+
+# list all files in the pwd along with their sizes
+alias d='du -h -d 1'
+
+# show all apps using the internet at the moment
+alias usingnet='lsof -P -i -n'
+
+# history configuration
+alias h=history
+export HISTFILESIZE=10000
+export HISTSIZE=1000
+export HISTCONTROL=erasedups
 
 
 # One of @janmoesen’s ProTip™s

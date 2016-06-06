@@ -115,6 +115,10 @@ function extract() {
 	fi
 }
 
+# Zip a file or a directory
+# > zip <filename>
+function zip () { command sudo ditto -c -k -rsrc "$0" "$0.zip"; }
+
 # who is using the laptop's iSight camera?
 camerausedby() {
 	echo "Checking to see who is using the iSight camera… 📷"
@@ -145,6 +149,10 @@ webmify(){
 	ffmpeg -i $1 -vcodec libvpx -acodec libvorbis -isync -copyts -aq 80 -threads 3 -qmax 30 -y $2 $1.webm
 }
 
+# download a website into a PDF
+makepdf(){
+    wget $URL | htmldoc --webpage -f "$URL".pdf - ; xpdf "$URL".pdf &
+}
 
 # visual studio code. a la `subl`
 code () {
