@@ -14,19 +14,21 @@ brew tap caskroom/versions
 brew cask install dropbox
 brew cask install gyazo
 brew cask install onepassword
-brew cask install rescuetime
 brew cask install caffeine
 brew cask install divvy
 
 # dev
-brew cask install iterm2
-brew cask install sublime-text3
-brew cask install transmit
-brew cask install navicat-for-postgresql
-brew cask install sequel-pro
+brew cask install atom
 brew cask install codekit
+brew cask install iterm2
+brew cask install navicat-for-postgresql
+brew cask install openrefine-dev
+brew cask install gitx
 brew cask install imagealpha
 brew cask install imageoptim
+brew cask install sequel-pro
+brew cask install sublime-text3
+brew cask install transmit
 
 # fun
 brew cask install limechat
@@ -40,10 +42,13 @@ brew cask install google-chrome-canary
 brew cask install firefox-nightly
 brew cask install webkit-nightly
 brew cask install chromium
-brew cask install torbrowser
+# brew cask install torbrowser
 
-# less often
+# Misc
+brew cask install nvalt
+
 brew cask install disk-inventory-x
+brew cask install sketch
 brew cask install screenflow4 # 4 specifically not 5.
 brew cask install vlc
 brew cask install mplayerx
