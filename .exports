@@ -1,3 +1,6 @@
+# Add to path
+export PATH="/usr/local/sbin:$PATH"
+
 # vim as default
 export EDITOR="vim"
 
@@ -16,6 +19,9 @@ command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
 eval "$(gdircolors -b ~/.dircolors)"
 
 # Python virtualenvwrapper settings
-export WORKON_HOME=~/venv
+export WORKON_HOME=~/envs
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
+
+# Golang
+export PATH="$PATH:/usr/local/opt/go/libexec/bin"

@@ -92,7 +92,7 @@ alias gc='git commit -v'
 alias gcop='git commit -p'
 alias gcl='git config --list'
 alias gd='git diff'
-alias gde='git diff | $EDITOR'
+alias gde='git diff | vim'
 alias gdt='git difftool'
 alias gf='git fetch'
 alias gfa='git fetch --all'
@@ -132,6 +132,12 @@ alias gstp='git stash pop'
 
 alias gcl='git config --list' # review global and project git config settings
 
+# list all branches that have been merged with master
+alias gmerged='for branch in `git branch -r --merged | grep -v HEAD`; do echo -e `git show --format="%ci %cr %an" $branch | head -n 1` \\t$branch; done | sort -r'
+
+# list all branches that have not been merged with master
+alias gunmerged='for branch in `git branch -r --no-merged | grep -v HEAD`; do echo -e `git show --format="%ci %cr %an" $branch | head -n 1` \\t$branch; done | sort -r'
+
 # http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired/
 # alias assume = update-index --assume-unchanged
 # alias unassume = update-index --no-assume-unchanged
@@ -139,6 +145,11 @@ alias gcl='git config --list' # review global and project git config settings
 # alias snapshot = !git stash save "snapshot: $(date)" && git staash apply "stash@{0}"
 # alias ours = "!f() { git checkout --ours $0 && git add $0; }; f"
 # alias theirs = "if() { git checkout --theirs $0 && git add $0; }; f"
+
+# DJANGO
+alias dj='python manage.py'
+alias djserver='python manage.py runserver_plus'
+alias djshell='python manage.py shell_plus --ptpython'
 
 
 # DOCKER
@@ -194,3 +205,6 @@ export HISTCONTROL=erasedups
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
 done
+
+# Personal
+alias cdfc='cd ${WORKON_HOME}/v2fluentcity/v2fluentcity'

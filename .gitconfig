@@ -23,7 +23,8 @@
 	excludesfile = ~/.gitignore
 	attributesfile = ~/.gitattributes
 	# insanely beautiful diffs
-	pager = diff-highlight | diff-so-fancy | less -r
+	pager = diff-so-fancy | less -r
+	editor = subl -n -w
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -32,17 +33,13 @@
 	meta = yellow bold
 	commit = green bold
 	frag = magenta bold
-	old = red bold
-	new = green bold
+	old = red strike
+	new = green italic
 	whitespace = red reverse
 [color "status"]
 	added = yellow
 	changed = green
 	untracked = cyan
-[merge]
-	tool = opendiff
-
-
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = "red bold 52"
@@ -86,3 +83,6 @@
 	required = true
 [init]
 	templatedir = ~/.git_template
+[user]
+	name = John Rutledge
+	email = john@fluentcity.com
